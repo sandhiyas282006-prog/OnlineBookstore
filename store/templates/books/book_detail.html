@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .book-info {
+            margin-top: 30px;
+        }
+
+        .book-info p {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 18px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+     <h1>{{ book.title }}</h1>
+{% if book.image %}
+    <img src="{{ book.image.url }}" alt="{{ book.title }}" width="300">
+{% endif %}
+
+    <div class="book-info">
+
+        <p><strong>Author:</strong> {{ book.author }}</p>
+
+        <p><strong>Category:</strong> {{ book.category }}</p>
+
+        <p><strong>Description:</strong></p>
+        <p>{{ book.description }}</p>
+
+        <p class="price">
+            Price: ₹{{ book.price }}
+        </p>
+
+        {% if book.is_best_seller %}
+            <p><strong>⭐ Best Seller</strong></p>
+        {% endif %}
+
+        {% if book.is_new_arrival %}
+            <p><strong>🆕 New Arrival</strong></p>
+        {% endif %}
+
+    </div>
+
+    <a href="/" class="back">← Back to Books</a>
+
+</div>
+
+</body>
+</html>
