@@ -76,6 +76,28 @@
     <h1>Online Bookstore</h1>
 
     <div class="search-box">
+<div style="text-align: center; margin: 25px 0;">
+
+    <strong>Categories:</strong>
+
+    <a href="/" style="margin: 0 10px;">
+        All Books
+    </a>
+
+    {% for category in categories %}
+
+        <a
+            href="?category={{ category.id }}"
+            style="margin: 0 10px;"
+        >
+            {{ category.name }}
+        </a>
+
+    {% endfor %}
+
+</div>
+
+
         <form method="GET">
             <input
                 type="text"
