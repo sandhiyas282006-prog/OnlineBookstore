@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Online Bookstore</title>
+</head>
+
+<body>
+
+```
+<h1>Welcome to Online Bookstore 📚</h1>
+
+<p>Browse our collection of books.</p>
+
+<hr>
+
+<h2>Available Books</h2>
+
+{% if books %}
+
+    {% for book in books %}
+
+        <div>
+            <h3>{{ book.title }}</h3>
+
+            <p><strong>Author:</strong> {{ book.author }}</p>
+
+            <p>{{ book.description }}</p>
+
+            <p><strong>Price:</strong> ₹{{ book.price }}</p>
+
+            <a href="{% url 'add_to_cart' book.id %}">
+                Add to Cart
+            </a>
+        </div>
+
+        <hr>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>No books available.</p>
+
+{% endif %}
+
+<br>
+
+<a href="{% url 'cart' %}">
+    View Shopping Cart
+</a>
+```
+
+</body>
+</html>

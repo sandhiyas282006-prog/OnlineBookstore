@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Shopping Cart</title>
+</head>
+
+<body>
+
+```
+<h1>Shopping Cart 🛒</h1>
+
+<hr>
+
+{% if cart_items %}
+
+    {% for item in cart_items %}
+
+        <h2>{{ item.book.title }}</h2>
+
+        <p>Price: ₹{{ item.book.price }}</p>
+
+        <p>Quantity: {{ item.quantity }}</p>
+
+        <p>Item Total: ₹{{ item.total_price }}</p>
+
+        <p>
+            <a href="{% url 'increase_quantity' item.book.id %}">
+                ➕ Increase
+            </a>
+
+            &nbsp;&nbsp;
+
+            <a href="{% url 'decrease_quantity' item.book.id %}">
+                ➖ Decrease
+            </a>
+
+            &nbsp;&nbsp;
+
+            <a href="{% url 'remove_from_cart' item.book.id %}">
+                ❌ Remove
+            </a>
+        </p>
+
+        <hr>
+
+    {% endfor %}
+
+    <h2>Total: ₹{{ total }}</h2>
+
+    <br>
+
+    <a href="{% url 'checkout' %}">
+        Proceed to Checkout
+    </a>
+
+{% else %}
+
+    <p>Your shopping cart is empty.</p>
+
+{% endif %}
+
+<br><br>
+
+<a href="{% url 'home' %}">
+    ← Back to Home
+</a>
+```
+
+</body>
+</html>
